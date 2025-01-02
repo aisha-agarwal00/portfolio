@@ -23,10 +23,23 @@ section{
     font-size:14px;
     --container-width: 900px;
     --gap: 50px;
+    --article-img-width:430px;
+    --article-flex-width:430px;
+    --project-flex-width:405px;
+    --talk-img-width: 267px;
+    --talk-flex-width:267px;
 }
 @media screen and (max-width:430px){
     section{
         --container-width:90vw;
         --gap:30px;
+        --article-img-width:90vw;
+        --article-flex-width:90vw;
+        --project-flex-width:calc(90vw - 20px);
+        --talk-flex-width:90vw;
+        --talk-img-width:90vw;
+    }
+    h1{
+        font-size: 3em;
     }
 }
