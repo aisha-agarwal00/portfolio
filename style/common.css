@@ -1,0 +1,32 @@
+body{
+    font-family: Arial, sans-serif;
+    background-color: #121213;
+    margin: 0;
+    padding: 0;
+    --card-bg:#252535;
+}
+
+h1{
+    font-size:4em;
+}
+
+ul{
+    list-style: none;
+    padding:0;
+    margin:0
+
+}
+a{
+    text-decoration: none;
+}
+section{
+    font-size:14px;
+    --container-width: 900px;
+    --gap: 50px;
+}
+@media screen and (max-width:430px){
+    section{
+        --container-width:90vw;
+        --gap:30px;
+    }
+}
