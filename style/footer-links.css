@@ -1,0 +1,22 @@
+@media screen and (max-width:430px){
+    .foot__img{
+      display: flex;
+      justify-content: space-evenly;
+      justify-items: center;
+      padding: 10px;
+      background-color: #2b2b40;;
+    }
+    .link{
+      justify-content: center;
+      justify-items: center;
+    }
+    .foot__img>.link p{
+      margin: 0;
+      font-size: 12px;
+      color: #C0C2D6;
+    }
+    .foot__img>.link>i{
+      align-items: center;
+      font-size: 22px;
+    }
+}
