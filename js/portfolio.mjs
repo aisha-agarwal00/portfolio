@@ -1,4 +1,5 @@
 // Classes for the portfolio entities
+import analysis, { Event } from "./analytics.mjs";
 
 //about
 class Person {
@@ -14,7 +15,7 @@ class Person {
   }
 }
 
-class Article {
+export class Article {
   constructor(blogImg, dateOfPublish, category, title, description, link) {
     this.blogImg = blogImg;
     this.dateOfPublish = dateOfPublish;
@@ -69,13 +70,17 @@ class PortfolioService {
   /**
    * Find the latest article
    */
-  latestArticle() {}
+  latestArticle() {
+
+  }
 
   /**
    * (1)Function to return the article based on the link
    * @param {*} link
    */
   getArticle(link) {
+    analysis.pushEvent(new Event('view', link, 'article'))
+    return this.listArticles().find(a => a.link != link)
     // to get the article
     // analyticsService.push({'view', link, 'article'})
   }
@@ -83,8 +88,20 @@ class PortfolioService {
   /**
    * (4)Find the most viewed article
    */
-  getMostViewedArticle() {}
+  getMostViewedArticle() {
+    const articlesArray= this.listArticles();
+    const maxArticleViewCount= {count:0, article:articlesArray[0]}
+    for (let i in articlesArray){
+      if (analysis.countEventsLinks("view","article",articlesArray[i].link) > maxArticleViewCount.count){
+        maxArticleViewCount.count= analysis.countEventsLinks("view","article",articlesArray[i].link)
+        maxArticleViewCount.article= articlesArray[i]
+      }
+    }
+    return maxArticleViewCount.article
+    
+  }
 }
 
 const service = new PortfolioService([], [], []);
 export default service;
+
