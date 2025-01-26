@@ -20,8 +20,7 @@ const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9];
  //filter out evenType: views
  console.log(events.filter(a=>a.eventType=="view"))
 
-/**
- * 5. Filter Out Invalid Email Addresses
- */ const emails=["agarwal@gmail.com","dharma","gandhi@gmail.com","rashika"]
- */ console.log(emails.filter(a=>(if "@gmail.com" include a)))
- 
+//**
+//5. Filter Out Invalid Email Addresses
+// const emails=["agarwal@gmail.com","dharma","gandhi@gmail.com","rashika"]
+// console.log(emails.filter(a=>(if "@gmail.com" include a)))
