@@ -30,7 +30,7 @@ export class UserAccount {
   }
 }
 
-export class AccountService {
+class AccountService {
   /**
    * Stores a map of user accounts
    * where the key is the email and value is the UserAccount object
@@ -71,5 +71,7 @@ export class AccountService {
     }
   }
 }
+
 //Create an empty Map for storing users
-export default  new AccountService(new Map());
+const account =  new AccountService(new Map());
+export default account
