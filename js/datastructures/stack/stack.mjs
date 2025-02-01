@@ -5,30 +5,39 @@ class Stack {
   }
 
   push(element) {
-    // Implement push operation
+    this.items.push(element)
   }
 
-  pop() {
-    // Implement pop operation
+  pop(element) {
+    this.items.pop(element)
   }
 
   peek() {
-    // Implement peek operation
+    return this.items[(this.items.length)-1]
   }
 
   isEmpty() {
-    // Implement isEmpty operation
+    if (this.items.lenght != 0){
+      return false
+    }
+    else{
+      return true
+    }
   }
 }
 
 // Function to reverse a string using a stack
 function reverseString(input) {
-  // Implement reverseString function
+  let s= ''
+  for( let i=input.length -1; i>=0; i=i-1){
+    s= s+input[i]
+  }
+  return s
 }
 
 // Function to check if parentheses are balanced
 function isBalanced(input) {
-  // Implement isBalanced function
+  
 }
 
 // MinStack class to support retrieving the minimum element
@@ -57,9 +66,21 @@ function evaluatePostfix(expression) {
 }
 
 // Function to sort a stack using only stack operations
-function sortStack(stack) {
-  // Implement sortStack function
+function sortStack(stack){
+  auxiliaryStack=[]
+  while (stack.lenght < 0){
+    temp=stack.pop()
+    while (auxiliaryStack){
+      if (stack[i]>temp){
+
+      }
+    }
+
+
+  }
 }
+ 
+
 
 // Exporting the functions and classes for use
 export default {
