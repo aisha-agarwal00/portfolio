@@ -1,17 +1,28 @@
+
 class UserProfileService {
-  constructor(articlesList, projectsList, talksList) {
-    this.articlesStore = new ArticleStore(articlesList);
-    // this.projectsStore = new ProjectsStore(projectsList);
-    // this.talksStore = new TalksStore(talksList);
+  constructor() {
+    this.articles = new Map();
+    // this.project = new Map();
+    // this.talks = new Map();
     //..
   }
 
-  addArticle(article) {
-    this.articlesStore.addArticle(article);
+  addArticle(account,article) {
+    if (this.articles.has(account.email)){
+      this.articles.get(account.email).push(article);
+    }
+    else{
+      this.articles.set(account.email,[article])
+    }
+    
   }
 
   listArticles() {
     return this.articlesStore.listArticles();
+  }
+  getArticles(account){
+    const articles = this.articles.get(account.email)
+    return articles
   }
 
   /**

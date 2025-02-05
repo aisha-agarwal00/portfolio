@@ -2,9 +2,10 @@
  * Utility class for storing response
  */
 export class Response {
-  constructor(success, message) {
+  constructor(success, message,account) {
     this.success = success;
     this.message = message;
+    this.account= account;
   }
 }
 
@@ -64,7 +65,7 @@ class AccountService {
    */
   handleSignInRequest(email,password){
     if (this.accounts.has(email) && this.accounts.get(email).password== password){
-      return new Response(true,'authenticated')
+      return new Response(true,'authenticated',this.accounts.get(email))
     }
     else{
       return new Response(false,'invalid email or password')

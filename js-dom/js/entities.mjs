@@ -11,7 +11,7 @@ class UserProfile {
   }
 }
 
-class Article {
+export class Article {
   constructor(blogImg, dateOfPublish, category, title, description, link) {
     this.blogImg = blogImg;
     this.dateOfPublish = dateOfPublish;

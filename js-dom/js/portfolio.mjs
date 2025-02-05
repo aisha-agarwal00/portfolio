@@ -1,8 +1,17 @@
 import account , {SignupRequest} from "./accounts.mjs";
+import UserProfileService from "./profile.mjs";
+import { Article } from "./entities.mjs";
+
+const userprofile = new UserProfileService()
+//Define an array of articles, projects and talks
+
+
 /**
  * Write a function to handle Signup request as per the design
  */
 export function handleSignup(form) {
+    //if it fails, then you will show an error message
+    //if it succeeds, then you will show the signin form
   let signUp= new SignupRequest(form.name.value, form.email.value, form.password.value)
   let response= account.handleSignupRequest(signUp)
   
@@ -17,16 +26,58 @@ export function handleSignup(form) {
    userError.innerText = response.message;
   }
 }
-
+const article1= new Article('img','20thjan','meeting','hsaah','one','readpost')
+const article2= new Article('imgBlog','20thfeb','meeting','hsaah','two','blogpost')
+/**
+ * Write a function to handle Signin request as per the design
+*/
 export function handleSignIn(form){
   let response= account.handleSignInRequest(form.email.value, form.password.value)
   if(response.success){
-    console.log('succefully log In')
+    userprofile.addArticle(account,article1)
+    userprofile.addArticle(account,article2)
+    const articles = userprofile.getArticles(account);
+    console.log(articles)
+    createArticlesSection(articles)
   }
   else{
     const error= document.getElementById('error');
     error.innerText= response.message
   }
+
+    // if it fails, show the error message
+
+  //if it succeeds, show the portfolio website (navigation and about section)
+
+  // Use UserProfileService get profile, articles, projects and talks
+ 
+  // Add the about section
+}
+function createArticlesSection(articles) {
+  const articleSection = document.getElementById('article__section');
+  const articlesHTML = articles.map(a => ` <div class="blog">
+        <div class="image">
+          <img src=${a.blogImg} />
+          <div class="date">
+            <p>${a.dateOfPublish}</p>
+            <p>${a.category}</p>
+          </div>
+        </div>
+        <p>${a.title}</p>
+        <p>
+         ${a.description}
+        </p>
+        </div>
+     `)
+    console.log(articlesHTML)
+    console.log(articleSection)
+
+    articleSection.innerHTML += articlesHTML.join('')
+
+
+
+
+ 
 }
 
 
